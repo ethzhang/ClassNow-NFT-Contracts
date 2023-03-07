@@ -2,7 +2,6 @@
 
 // File: @openzeppelin/contracts/utils/math/SafeMath.sol
 
-
 // OpenZeppelin Contracts (last updated v4.6.0) (utils/math/SafeMath.sol)
 
 pragma solidity ^0.8.0;
@@ -23,12 +22,15 @@ library SafeMath {
      *
      * _Available since v3.4._
      */
-    function tryAdd(uint256 a, uint256 b) internal pure returns (bool, uint256) {
-    unchecked {
-        uint256 c = a + b;
-        if (c < a) return (false, 0);
-        return (true, c);
-    }
+    function tryAdd(
+        uint256 a,
+        uint256 b
+    ) internal pure returns (bool, uint256) {
+        unchecked {
+            uint256 c = a + b;
+            if (c < a) return (false, 0);
+            return (true, c);
+        }
     }
 
     /**
@@ -36,11 +38,14 @@ library SafeMath {
      *
      * _Available since v3.4._
      */
-    function trySub(uint256 a, uint256 b) internal pure returns (bool, uint256) {
-    unchecked {
-        if (b > a) return (false, 0);
-        return (true, a - b);
-    }
+    function trySub(
+        uint256 a,
+        uint256 b
+    ) internal pure returns (bool, uint256) {
+        unchecked {
+            if (b > a) return (false, 0);
+            return (true, a - b);
+        }
     }
 
     /**
@@ -48,16 +53,19 @@ library SafeMath {
      *
      * _Available since v3.4._
      */
-    function tryMul(uint256 a, uint256 b) internal pure returns (bool, uint256) {
-    unchecked {
-        // Gas optimization: this is cheaper than requiring 'a' not being zero, but the
-        // benefit is lost if 'b' is also tested.
-        // See: https://github.com/OpenZeppelin/openzeppelin-contracts/pull/522
-        if (a == 0) return (true, 0);
-        uint256 c = a * b;
-        if (c / a != b) return (false, 0);
-        return (true, c);
-    }
+    function tryMul(
+        uint256 a,
+        uint256 b
+    ) internal pure returns (bool, uint256) {
+        unchecked {
+            // Gas optimization: this is cheaper than requiring 'a' not being zero, but the
+            // benefit is lost if 'b' is also tested.
+            // See: https://github.com/OpenZeppelin/openzeppelin-contracts/pull/522
+            if (a == 0) return (true, 0);
+            uint256 c = a * b;
+            if (c / a != b) return (false, 0);
+            return (true, c);
+        }
     }
 
     /**
@@ -65,11 +73,14 @@ library SafeMath {
      *
      * _Available since v3.4._
      */
-    function tryDiv(uint256 a, uint256 b) internal pure returns (bool, uint256) {
-    unchecked {
-        if (b == 0) return (false, 0);
-        return (true, a / b);
-    }
+    function tryDiv(
+        uint256 a,
+        uint256 b
+    ) internal pure returns (bool, uint256) {
+        unchecked {
+            if (b == 0) return (false, 0);
+            return (true, a / b);
+        }
     }
 
     /**
@@ -77,11 +88,14 @@ library SafeMath {
      *
      * _Available since v3.4._
      */
-    function tryMod(uint256 a, uint256 b) internal pure returns (bool, uint256) {
-    unchecked {
-        if (b == 0) return (false, 0);
-        return (true, a % b);
-    }
+    function tryMod(
+        uint256 a,
+        uint256 b
+    ) internal pure returns (bool, uint256) {
+        unchecked {
+            if (b == 0) return (false, 0);
+            return (true, a % b);
+        }
     }
 
     /**
@@ -174,10 +188,10 @@ library SafeMath {
         uint256 b,
         string memory errorMessage
     ) internal pure returns (uint256) {
-    unchecked {
-        require(b <= a, errorMessage);
-        return a - b;
-    }
+        unchecked {
+            require(b <= a, errorMessage);
+            return a - b;
+        }
     }
 
     /**
@@ -197,10 +211,10 @@ library SafeMath {
         uint256 b,
         string memory errorMessage
     ) internal pure returns (uint256) {
-    unchecked {
-        require(b > 0, errorMessage);
-        return a / b;
-    }
+        unchecked {
+            require(b > 0, errorMessage);
+            return a / b;
+        }
     }
 
     /**
@@ -223,15 +237,14 @@ library SafeMath {
         uint256 b,
         string memory errorMessage
     ) internal pure returns (uint256) {
-    unchecked {
-        require(b > 0, errorMessage);
-        return a % b;
-    }
+        unchecked {
+            require(b > 0, errorMessage);
+            return a % b;
+        }
     }
 }
 
 // File: @openzeppelin/contracts/utils/Context.sol
-
 
 // OpenZeppelin Contracts v4.4.1 (utils/Context.sol)
 
@@ -259,11 +272,9 @@ abstract contract Context {
 
 // File: @openzeppelin/contracts/access/Ownable.sol
 
-
 // OpenZeppelin Contracts v4.4.1 (access/Ownable.sol)
 
 pragma solidity ^0.8.0;
-
 
 /**
  * @dev Contract module which provides a basic access control mechanism, where
@@ -280,7 +291,10 @@ pragma solidity ^0.8.0;
 abstract contract Ownable is Context {
     address private _owner;
 
-    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+    event OwnershipTransferred(
+        address indexed previousOwner,
+        address indexed newOwner
+    );
 
     /**
      * @dev Initializes the contract setting the deployer as the initial owner.
@@ -320,7 +334,10 @@ abstract contract Ownable is Context {
      * Can only be called by the current owner.
      */
     function transferOwnership(address newOwner) public virtual onlyOwner {
-        require(newOwner != address(0), "Ownable: new owner is the zero address");
+        require(
+            newOwner != address(0),
+            "Ownable: new owner is the zero address"
+        );
         _transferOwnership(newOwner);
     }
 
@@ -339,30 +356,22 @@ abstract contract Ownable is Context {
 
 pragma solidity ^0.8.0;
 
-
 interface IERC20 {
-
     function balanceOf(address account) external view returns (uint256);
-
 }
-
 
 pragma solidity ^0.8.0;
 
-
-
 interface IEmu {
-
     function totalSupply() external view returns (uint256);
 
     function safeMint(address to, uint256 quantity) external;
-
 }
 
 contract EagerEmuMint is Ownable {
     using SafeMath for uint256;
 
-    uint256 public  MAX_SUPPLY = 5000;
+    uint256 public MAX_SUPPLY = 5000;
 
     mapping(address => bool) public getOgMint;
 
@@ -411,30 +420,36 @@ contract EagerEmuMint is Ownable {
         endTime = _endTime;
     }
 
-
-    function setMintList(address[] memory users, bool isOg, bool isAllowed) external onlyOperator {
-        if(isOg) {
-            for(uint256 i = 0; i< users.length; i++) {
+    function setMintList(
+        address[] memory users,
+        bool isOg,
+        bool isAllowed
+    ) external onlyOperator {
+        if (isOg) {
+            for (uint256 i = 0; i < users.length; i++) {
                 require(users[i] != address(0), "user invalid");
                 require(getOgMint[users[i]] != isAllowed, "type invaild");
                 getOgMint[users[i]] = isAllowed;
-                if(isAllowed) {
+                if (isAllowed) {
                     ogListCount++;
                 } else {
-                    if(ogListCount > 0) {
+                    if (ogListCount > 0) {
                         ogListCount--;
                     }
                 }
             }
-        }else {
-            for(uint256 i = 0; i< users.length; i++) {
+        } else {
+            for (uint256 i = 0; i < users.length; i++) {
                 require(users[i] != address(0), "user invalid");
-                require(getWhileListMint[users[i]] != isAllowed, "type invaild");
+                require(
+                    getWhileListMint[users[i]] != isAllowed,
+                    "type invaild"
+                );
                 getWhileListMint[users[i]] = isAllowed;
-                if(isAllowed) {
+                if (isAllowed) {
                     whileListCount++;
                 } else {
-                    if(whileListCount > 0){
+                    if (whileListCount > 0) {
                         whileListCount--;
                     }
                 }
@@ -443,7 +458,12 @@ contract EagerEmuMint is Ownable {
     }
 
     function mintNftMeta(uint256 tokenQuantity) public payable returns (bool) {
-        require(block.timestamp >= startTime  || getOgMint[msg.sender] || getWhileListMint[msg.sender], "Time invalid");
+        require(
+            block.timestamp >= startTime ||
+                getOgMint[msg.sender] ||
+                getWhileListMint[msg.sender],
+            "Time invalid"
+        );
         require(block.timestamp <= endTime, "Time invalid");
 
         require(
@@ -477,13 +497,14 @@ contract EagerEmuMint is Ownable {
             "Not enough vs sent"
         );
 
-        userMintCount[msg.sender] = userMintCount[msg.sender].add(tokenQuantity);
+        userMintCount[msg.sender] = userMintCount[msg.sender].add(
+            tokenQuantity
+        );
 
-        emu.safeMint(msg.sender,tokenQuantity);
+        emu.safeMint(msg.sender, tokenQuantity);
 
         return true;
     }
-
 
     function userMintQuota(address _user) public view returns (uint256) {
         if (getOgMint[_user]) {
@@ -495,13 +516,19 @@ contract EagerEmuMint is Ownable {
         }
     }
 
-
-    function setMintPrice(uint256 _whileListMintPrice, uint256 _publicMintPrice) public onlyOperator {
+    function setMintPrice(
+        uint256 _whileListMintPrice,
+        uint256 _publicMintPrice
+    ) public onlyOperator {
         whileListMintPrice = _whileListMintPrice;
         publicMintPrice = _publicMintPrice;
     }
 
-    function setMaxMint(uint256 _ogMaxMint, uint256 _whileListMaxMint, uint256 _publicMaxMint) public onlyOperator {
+    function setMaxMint(
+        uint256 _ogMaxMint,
+        uint256 _whileListMaxMint,
+        uint256 _publicMaxMint
+    ) public onlyOperator {
         ogMaxMint = _ogMaxMint;
         whileListMaxMint = _whileListMaxMint;
         publicMaxMint = _publicMaxMint;
@@ -521,15 +548,21 @@ contract EagerEmuMint is Ownable {
     //        MAX_SUPPLY = _supply;
     //    }
 
-    function withdrawOnlyOwner(address _token, address to) public onlyOwner returns(bool) {
+    function withdrawOnlyOwner(
+        address _token,
+        address to
+    ) public onlyOwner returns (bool) {
         uint256 balance = 0;
         if (_token != address(0)) {
             balance = IERC20(_token).balanceOf(address(this));
             require(balance > 0, "Insufficient tokens");
-            (bool success, bytes memory data) = _token.call(abi.encodeWithSelector(0xa9059cbb, to, balance));
+            (bool success, bytes memory data) = _token.call(
+                abi.encodeWithSelector(0xa9059cbb, to, balance)
+            );
             require(
                 success && (data.length == 0 || abi.decode(data, (bool))),
-                'Transfer failed');
+                "Transfer failed"
+            );
         } else {
             balance = address(this).balance;
             require(balance > 0, "Insufficient balance");
